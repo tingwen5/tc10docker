@@ -1,0 +1,39 @@
+version: '3.7'
+services:
+  mssql2012:
+    image: mssql:2012
+    ports:
+     - "1433:1433"
+    environment: 
+      sa_password: Infodba@
+      ACCEPT_EULA: Y
+    isolation: hyperv
+    hostname: sqlserver
+  tc10volume:
+    image: tc10:volume
+    ports: 
+      - "4544:4544"
+    isolation: hyperv
+    hostname: tc10volume
+
+  tc10license:
+    image: tc10:license
+    build: 
+      context: ./tc10-license
+    ports: 
+      - "28000:28000"
+      - "38000:38000"
+    isolation: hyperv
+    # license mac address
+    # mac_address: 92:d0:c6:0a:29:33
+    # license host name
+    hostname: tc10license
+    volumes: 
+      - c:\lic:c:\lic
+
+
+
+
+
+
+    

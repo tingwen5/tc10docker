@@ -1,0 +1,50 @@
+version: '3.7'
+services:
+  mssql:
+    image: mssql:2012
+    build: 
+      context: ./mssql-2012
+    ports:
+     - "1433:1433"
+    environment: 
+      sa_password: Infodba@
+      ACCEPT_EULA: Y
+    isolation: hyperv
+    hostname: mssql
+  servercorejdk:
+    image: servercore:jdk7
+    build: 
+      context: ./servercore-jdk7
+    isolation: hyperv
+  tc10corporate:
+    image: tc10:corporate
+    build: 
+      context: ./tc10-corporate
+    isolation: hyperv
+    hostname: tc10corporate
+  tc10installMedia:
+    image: tc10:installMedia
+    build: 
+      context: ./tc10-installMedia
+    isolation: hyperv
+    hostname: tc10installMedia
+  tc10license:
+    image: tc10:license
+    build: 
+      context: ./tc10-license
+    isolation: hyperv
+    hostname: tc10license
+  tc10volume:
+    image: tc10:volume
+    build: 
+      context: ./tc10-volume
+    isolation: hyperv
+    hostname: tc10volume
+  
+
+
+
+
+
+
+    
